@@ -1,7 +1,8 @@
-namespace OMGG.Chronicle.Network {
+namespace OMGG.Chronicle {
 
-    public interface IChronicleNetworkAdapter {
+    public interface IChronicleBroadcaster {
 
         void BroadcastChronicle(ChronicleEntry entry);
+        void BroadcastChronicleRemoval(string id);
     }
 }

@@ -1,36 +1,53 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine.Events;
 
 namespace OMGG.Chronicle {
-
-    using OMGG.Chronicle.Network;
 
     public class ChronicleManager {
 
         #region Variables
 
         public event UnityAction<ChronicleEntry> OnChronicleAdded;
+        public event UnityAction<ChronicleEntry> OnChronicleRemoved;
+
 
         private readonly List<ChronicleEntry> _History = new();
 
-        private IChronicleNetworkAdapter _NetworkAdapter;
+        private IChronicleBroadcaster _Broadcaster;
 
         #endregion
 
         #region Setters
 
-        public void SetNetworkAdapter(IChronicleNetworkAdapter adapter)
+        public void SetBroadcaster(IChronicleBroadcaster caster)
         {
-            _NetworkAdapter = adapter;
+            _Broadcaster = caster;
         }
 
         public void AddEvent(ChronicleEntry entry)
         {
+            entry.Id         ??= Guid.NewGuid().ToString();
+            entry.TimestampUtc = DateTime.UtcNow.Ticks;
+
             _History.Add(entry);
 
             OnChronicleAdded?.Invoke(entry);
 
-            _NetworkAdapter?.BroadcastChronicle(entry);
+            _Broadcaster?.BroadcastChronicle(entry);
+        }
+
+        public void RemoveEvent(string id)
+        {
+            var entry = _History.Find(e => e.Id == id);
+
+            if (entry == null)
+                return;
+            _History.Remove(entry);
+
+            OnChronicleRemoved?.Invoke(entry);
+
+            _Broadcaster?.BroadcastChronicleRemoval(id);
         }
 
         #endregion

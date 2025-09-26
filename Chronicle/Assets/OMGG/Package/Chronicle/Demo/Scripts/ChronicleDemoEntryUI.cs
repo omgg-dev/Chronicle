@@ -1,53 +1,53 @@
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
+using System;
 
 namespace OMGG.Chronicle.DemoGame {
 
-    public class ChronicleDemoEntryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    public class ChronicleDemoEntryUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
-        public ChronicleEntry Entry;
-
-        public Text  Title;
-        public Text  Description;
+        [Header("UI References")]
         public Image IconImage;
+
+        public Text TitleText;
+        public Text DescriptionText;
 
         public GameObject Tooltip;
 
-        public UnityEvent<ChronicleEntry> OnRightClick;
+        public ChronicleEntry Entry;
 
-        public void Setup(ChronicleEntry entry)
+        public Action<ChronicleEntry> OnClicked;
+        public Action<string> OnRemoved;
+
+        public void Bind(ChronicleEntry entry)
         {
             Entry = entry;
 
-            Title.text       = entry.DisplayTitle;
-            Description.text = entry.DisplayText;
+            TitleText.text       = Entry.TitleKey;
+            DescriptionText.text = Entry.MessageKey;
 
-            if (!string.IsNullOrEmpty(entry.IconKey)) {
-                var sprite = Resources.Load<Sprite>(entry.IconKey);
+            if (!string.IsNullOrEmpty(Entry.IconKey)) {
+                var sprite = Resources.Load<Sprite>(Entry.IconKey);
 
                 if (sprite != null)
                     IconImage.sprite = sprite;
             }
 
-            OnPointerExit(null);
-        }
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            Tooltip.SetActive(true);
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
             Tooltip.SetActive(false);
         }
 
-        public void OnDelete()
+        public void OnPointerClick(PointerEventData eventData)
         {
-            if (OnRightClick != null)
-                OnRightClick.Invoke(Entry);
+            if (eventData.button == PointerEventData.InputButton.Left) {
+                OnClicked?.Invoke(Entry);
+            } else if (eventData.button == PointerEventData.InputButton.Right) {
+                OnRemoved?.Invoke(Entry.Id);
+            }
         }
+
+        public void OnPointerEnter(PointerEventData _) => Tooltip.SetActive(true);
+
+        public void OnPointerExit(PointerEventData _) => Tooltip.SetActive(false);
     }
 }
