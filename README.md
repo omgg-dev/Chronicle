@@ -23,7 +23,9 @@
 
 ---
 
-## Chronicle 
+## DEMO
+
+![OMGG Chronicle Package Demo](./Assets/Demo.gif)
 
 ---
 
