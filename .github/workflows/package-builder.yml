@@ -26,7 +26,7 @@ env:
   stopDate: '2026-09-21T09:42:02'
 
   # Path of the project in the repository.
-  projectPath: 'template-package'
+  projectPath: 'Chronicle'
 
   # The version of Unity to use.
   # NOTE: Update this version if the company update his environment.

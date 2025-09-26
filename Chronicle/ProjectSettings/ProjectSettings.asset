@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: template-package
+  productName: Chronicle
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -852,14 +852,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: template-package
+  metroPackageName: Chronicle
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: template-package
+  metroApplicationDescription: Chronicle
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -933,7 +933,7 @@ PlayerSettings:
   cloudProjectId: 6f2e54d4-7e29-4c78-b52e-b71ced619330
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: template-package 2025-08-01_15-16-28
+  projectName: Chronicle 2025-08-01_15-16-28
   organizationId: pharanight
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
