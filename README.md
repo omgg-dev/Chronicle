@@ -1,4 +1,4 @@
-# OMGG Package Template
+# OMGG Chronicle
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/omgg-dev/OMGG/fb927d2e5dd26680eb12a9c22695eebf7aa05d8d/Assets/Logo_SideFullText_Big.svg" alt="OMGG's Logo" width="800">
@@ -20,6 +20,10 @@
     <img alt="Assets License" src="https://img.shields.io/badge/Assets_License-Custom-blue">
   </a>
 </p>
+
+---
+
+## Chronicle 
 
 ---
 
