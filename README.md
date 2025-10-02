@@ -1,4 +1,4 @@
-# OMGG Package Template
+# OMGG Chronicle
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/omgg-dev/OMGG/fb927d2e5dd26680eb12a9c22695eebf7aa05d8d/Assets/Logo_SideFullText_Big.svg" alt="OMGG's Logo" width="800">
@@ -20,6 +20,22 @@
     <img alt="Assets License" src="https://img.shields.io/badge/Assets_License-Custom-blue">
   </a>
 </p>
+
+---
+
+## Demo Overview
+
+The **OMGG Chronicle** demo illustrates how the package can be used to track game events and trigger associated actions (e.g., map focus, popups...) in a Unity project.
+
+In the demo:
+- Click buttons like *“New Egyptian City”* or *“Quest Completed”* to generate Chronicle entries.
+- Each entry can include an **action callback** and a **payload** (extra data).
+- Entries are displayed in a UI list with interactive tooltips.
+- The demo simulates server-authoritative behavior locally to keep network paradigms consistent.
+
+> For a detailed walkthrough of the demo setup and usage, check the [Chronicle Demo Wiki page](https://github.com/omgg-dev/Chronicle/wiki/Demo).
+
+![OMGG Chronicle Package Demo](./Assets/Demo.gif)
 
 ---
 
