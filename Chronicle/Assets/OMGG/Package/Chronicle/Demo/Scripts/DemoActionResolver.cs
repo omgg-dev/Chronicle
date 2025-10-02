@@ -1,6 +1,9 @@
-using System;
-using Unity.Plastic.Newtonsoft.Json.Linq;
 using UnityEngine;
+using System;
+
+#if CHRONICLE_USE_JSON
+    using Unity.Plastic.Newtonsoft.Json.Linq;
+#endif
 
 namespace OMGG.Chronicle.DemoGame {
 
@@ -10,6 +13,7 @@ namespace OMGG.Chronicle.DemoGame {
         {
             switch (entry.ActionKey) {
                 case "FocusMap":
+#if CHRONICLE_USE_JSON
                     if (!string.IsNullOrEmpty(entry.PayloadJson)) {
                         try {
                             var json = JObject.Parse(entry.PayloadJson);
@@ -21,11 +25,12 @@ namespace OMGG.Chronicle.DemoGame {
                         } catch (Exception e) {
                             Debug.LogWarning("[Action] Failed to parse payload: " + e.Message);
                         }
-                    }
-                    else
-                    {
+                    } else {
                         Debug.Log($"[Action] FocusMap on {entry.ActionArgs[0]} (no payload available)");
                     }
+#else
+                    Debug.Log($"[Action] FocusMap on {entry.ActionArgs[0]} (JSON parsing disabled, enable CHRONICLE_USE_JSON to parse payload)");
+#endif
 
                     break;
 
